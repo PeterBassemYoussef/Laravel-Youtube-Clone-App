@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChannelSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/channel/{channel}/edit', [ChannelSettingController::class, 'edit'])->name('channel.edit');
+    Route::put('/channel/{channel}/update', [ChannelSettingController::class, 'update'])->name('channel.udate');
+});
