@@ -46,12 +46,13 @@
                                             class="form-control @error('slug') is-invalid @enderror" name="slug"
                                             value="{{ old('slug') ? old('slug') : $channel->slug }}" required
                                             autocomplete="slug" autofocus>
+
+                                            @error('slug')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                     </div>
-                                    @error('slug')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
